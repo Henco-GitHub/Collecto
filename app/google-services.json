@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "721519304917",
+    "firebase_url": "https://collecto-cda25-default-rtdb.firebaseio.com",
+    "project_id": "collecto-cda25",
+    "storage_bucket": "collecto-cda25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721519304917:android:af9fcb3786814ff6b4025c",
+        "android_client_info": {
+          "package_name": "com.example.collecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721519304917-npe8f5j3sogf0dpho4lo0di8dl58coeg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-pZKGOBWkQra7rKTvvbSpmn9p7MfRD48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721519304917-npe8f5j3sogf0dpho4lo0di8dl58coeg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
