@@ -2,10 +2,7 @@ package com.example.collecto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,16 +24,20 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogReg;
     ImageView imgLogo;
 
-    //Firebase
-    private FirebaseDatabase rootNode;
-    DatabaseReference Userreference;
-
-    String TAG = "Firebase";
-
-    final ArrayList<String> listUsername = new ArrayList<>();
-
     public String username;
     public String password;
+    boolean uNameResult;
+    ArrayList<User> alUsers = new ArrayList<User>();
+    User user;
+
+    //Firebase Variables
+    //Get Firebase References.
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //Get reference of "message" key.
+    DatabaseReference refMessage = database.getReference("message");
+    //Get Main parent of Database.
+    DatabaseReference refRoot = refMessage.getParent();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,81 +49,106 @@ public class MainActivity extends AppCompatActivity {
         btnLogReg = findViewById(R.id.btnLogReg);
         imgLogo = findViewById(R.id.imgLogo);
 
-
-        //Firebase
-        rootNode = FirebaseDatabase.getInstance();
-        Userreference=rootNode.getReference("users");
-
-
-
+        alUsers = GetUsers();
     }
 
-    public void loginRegister(View v)
-    {
+    //Button Click Method to Login/Register
+    public void clickLoginRegister(View view) {
+        //Get child "users" reference
+        DatabaseReference refUsers = refRoot.child("users");
 
+        //Get Details from Login/Register form.
+        username = txtUsername.getText().toString();
+        password = txtPassword.getText().toString();
 
-        if (txtUsername.getText().toString().equals("") )
-        {
-            Toast.makeText(getApplicationContext(),"Please make sure to fill in both fields",
-                    Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            //read username
+        user = new User(username, password);
 
-            Userreference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+        //TO DO: Check Validation
 
-                    for (DataSnapshot snapshot1 : snapshot.getChildren())
-                    {
-                        login l2 = snapshot1.getValue(login.class);
-                        int id = l2.getId();
+        String msgToast = "";
 
-                        username = snapshot1.child(id + "/username").getValue().toString();
-                        password = snapshot1.child(id + "/password").getValue().toString();
-
-                        listUsername.add(username);
-
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-
-            if (listUsername.contains(txtUsername.getText().toString()) && txtPassword.getText().toString() == password)
-            {
-                //log user in
-                //send user to next page
-                Intent intent = new Intent(this,myCollections.class);
-                startActivity(intent);
-            }
-            else {
-                //register user
-                //login class
-                login l = new login(txtUsername.getText().toString(), txtPassword.getText().toString(), 3);
-                Userreference.child(l.getId()+"").setValue(l);
-
-                //send user to next page
-                Intent intent = new Intent(this,myCollections.class);
-                startActivity(intent);
+        if (UserExists(username) == true) {
+            switch (Login(user)) {
+                case -1:
+                    msgToast = "Successful Login!";
+                    break;
+                case 0:
+                case 1:
+                    msgToast = "Incorrect Login Details!";
             }
 
-
-
-
+            //Output Message
+            Toast.makeText(this, msgToast, Toast.LENGTH_SHORT).show();
+        } else {
+            //Register new User
+            refUsers.push().setValue(user);
+            
+            //Tell User Success
+            Toast.makeText(this, "Successful Register and Login!", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     }
 
+    //Method to try and Login with input details
+    public int Login(User attempt) {
+        int result = -1; //Login Attempt Successful
 
+        //Find Username in ArrayList
+        for (int i = 0; i < alUsers.size(); i++) {
+            //Get User Object of current index(i)
+            User u = alUsers.get(i);
 
+            //Check if current index matches login attempt username
+            if (!attempt.getUsername().equals(u.getUsername())) {
+                result = 0; //Username does not match/exist
+                continue;
+            }
+
+            //Check if current index matches login attempt password
+            if (!attempt.getPassword().equals(u.getPassword())) {
+                result = 1; //Passwords do not match | Cannot login
+                continue;
+            }
+
+            result = -1; //Successful
+            break;
+        }
+
+        return result;
+    }
+
+    //Get List of Registered Users
+    public ArrayList<User> GetUsers() {
+        ArrayList<User> toReturn = new ArrayList<User>();
+        DatabaseReference refUsers = refRoot.child("users");
+
+        refUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User u = new User();
+
+                for (DataSnapshot UsersFromDB : snapshot.getChildren()) {
+                    u = UsersFromDB.getValue(User.class);
+                    toReturn.add(u);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return toReturn;
+    }
+
+    //Check if User Exists
+    public boolean UserExists(String uName) {
+        for (User u : alUsers) {
+            if (u.getUsername().equals(uName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
