@@ -2,6 +2,8 @@ package com.example.collecto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,10 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
         String msgToast = "";
 
+        Intent i = new Intent(MainActivity.this, myCollections.class);
+
         if (UserExists(username) == true) {
             switch (Login(user)) {
                 case -1:
                     msgToast = "Successful Login!";
+                    i.putExtra("username", user.getId());
                     break;
                 case 0:
                 case 1:
@@ -81,11 +86,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, msgToast, Toast.LENGTH_SHORT).show();
         } else {
             //Register new User
-            refUsers.push().setValue(user);
+            Collection books = new Collection();
+            books.setName("Books");
+            user.AddCollection(books);
+
+            refUsers.child(user.getId()+"").setValue(user);
             
             //Tell User Success
             Toast.makeText(this, "Successful Register and Login!", Toast.LENGTH_SHORT).show();
         }
+
+        startActivity(i);
     }
 
     //Method to try and Login with input details
@@ -110,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             result = -1; //Successful
+            attempt.LoadCollections();
             break;
         }
 

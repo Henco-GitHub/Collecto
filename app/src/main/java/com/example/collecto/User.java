@@ -10,10 +10,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class User {
-    String username;
-    String password;
-    boolean uNameResult;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class User extends Collections {
+    private String username;
+    private String password;
+    private String id;
+    private User tUser = this;
+
+    public static User loggedin;
+
+    private boolean uNameResult;
 
     //Firebase Variables
     //Get Firebase References.
@@ -47,5 +55,45 @@ public class User {
         this.password = password;
     }
 
+    public String getId() {
+        setId();
+        return id;
+    }
 
+    private void setId() {
+        this.id = username;
+    }
+
+    //Load Collections into extended(inherited) ArrayList
+    public void LoadCollections() {
+        tUser.ClearList();
+
+        //Users Reference
+        DatabaseReference refUsers = refRoot.child("users");
+        //Specific User Reference
+        DatabaseReference refLoggedIn = refUsers.child(this.getId());
+        //User Collections reference
+        DatabaseReference refCollections = refLoggedIn.child("collections");
+
+        refCollections.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Collection c = new Collection();
+
+                for (DataSnapshot dbCollection : snapshot.getChildren()) {
+                    String c_name = dbCollection.child("name").getValue(String.class);
+                    String c_desc = dbCollection.child("description").getValue(String.class);
+
+                    c = new Collection(c_name, c_desc);
+
+                    tUser.AddCollection(c);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
