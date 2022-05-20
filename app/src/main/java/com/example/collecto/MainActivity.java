@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
+import android.view.Window;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_main);
 
         txtUsername = findViewById(R.id.txtUsername);
@@ -69,13 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
         String msgToast = "";
 
+
+        HashMap<String, Object> hashMap = new HashMap<>();
         Intent i = new Intent(MainActivity.this, myCollections.class);
 
         if (UserExists(username) == true) {
             switch (Login(user)) {
                 case -1:
                     msgToast = "Successful Login!";
-                    i.putExtra("username", user.getId());
+                    hashMap.put("user", user);
+                    i.putExtra("hashmap", hashMap);
                     break;
                 case 0:
                 case 1:
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             user.AddCollection(books);
 
             refUsers.child(user.getId()+"").setValue(user);
-            
+
             //Tell User Success
             Toast.makeText(this, "Successful Register and Login!", Toast.LENGTH_SHORT).show();
         }

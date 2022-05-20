@@ -4,29 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/lblTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="11dp"
         android:text="Collecto"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lblLogReg"
-        app:layout_constraintEnd_toEndOf="@+id/imgLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="133dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/lblTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,13 +33,12 @@
         android:id="@+id/lblLogReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="23dp"
         android:text="Login/Register"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lblUsername"
-        app:layout_constraintStart_toStartOf="@+id/lblUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
 
     <TextView
@@ -53,55 +50,68 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txtUsername"
-        app:layout_constraintStart_toStartOf="@+id/txtUsername"
-        app:layout_constraintTop_toBottomOf="@+id/lblLogReg" />
+        app:layout_constraintStart_toStartOf="@+id/txtUsername" />
 
     <TextView
         android:id="@+id/lblPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="14dp"
         android:text="Password"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txtPassword"
-        app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
+        app:layout_constraintStart_toStartOf="@+id/txtPassword" />
 
     <EditText
         android:id="@+id/txtUsername"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/lblPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblUsername" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtPassword"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnLogReg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPassword" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnLogReg"
+        android:layout_width="219dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:onClick="clickLoginRegister"
+        android:text="Login"
+        app:layout_constraintBottom_toTopOf="@+id/btnToReg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnToReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="120dp"
-        android:onClick="clickLoginRegister"
-        android:text="LOGIN/REGISTER"
+        android:text="Register"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblReg"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogReg" />
+
+    <TextView
+        android:id="@+id/lblReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="44dp"
+        android:text="Don't have an account?"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintEnd_toStartOf="@+id/btnToReg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
