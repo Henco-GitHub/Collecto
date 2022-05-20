@@ -42,15 +42,15 @@
         app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
 
     <TextView
-        android:id="@+id/lblUsername"
+        android:id="@+id/lblEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
-        android:text="Username"
+        android:text="Email"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtUsername"
-        app:layout_constraintStart_toStartOf="@+id/txtUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/txtEmail"
+        app:layout_constraintStart_toStartOf="@+id/txtEmail" />
 
     <TextView
         android:id="@+id/lblPassword"
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="@+id/txtPassword" />
 
     <EditText
-        android:id="@+id/txtUsername"
+        android:id="@+id/txtEmail"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

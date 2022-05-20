@@ -110,11 +110,9 @@ public class RegisterActivity extends AppCompatActivity {
         String u_id = FireAuth.getUid();
 
         HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("uid",u_id);
-        hashMap.put("email",email);
-        hashMap.put("name",name);
-        hashMap.put("profileImage","");
-        hashMap.put("userType","user");
+        hashMap.put("uid", u_id);
+        hashMap.put("email", email);
+        hashMap.put("name", name);
 
         DatabaseReference refUsers = FirebaseDatabase.getInstance().getReference("users");
 
