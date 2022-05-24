@@ -14,4 +14,7 @@
     <color name="c_blue">#006992</color>
     <color name="c_purple">#9F9FED</color>
     <color name="c_brown">#A18276</color>
+    <color name="c_red">#D11A2A</color>
+    <color name="c_green">#6CA468</color>
+    <color name="c_grey">#b8bccc</color>
 </resources>

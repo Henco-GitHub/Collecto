@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".myCollections">
 
         <RelativeLayout
@@ -25,6 +27,33 @@
                     android:textColor="@color/c_white"
                     android:textSize="40sp" />
         </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlCollHead"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/c_grey"
+            android:drawableStart="@drawable/ic_search"
+            android:focusable="auto"
+            android:hint="Search Collections"
+            android:padding="10dp"
+            android:textColorHint="@color/c_black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCollections"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/llAddColl"
+            android:layout_below="@id/edtSearch"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_collection">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <LinearLayout
             android:id="@+id/llAddColl"

@@ -83,6 +83,7 @@ public class AddCollectionActivity extends AppCompatActivity {
         long c_id = System.currentTimeMillis();
 
         HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put("id","" + c_id);
         hashMap.put("name","" + c_name);
         hashMap.put("description","" + c_desc);
         hashMap.put("uid", "" + FireAuth.getUid());

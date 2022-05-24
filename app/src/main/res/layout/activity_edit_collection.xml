@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".AddCollectionActivity">
+    tools:context=".EditCollection">
 
     <RelativeLayout
-        android:id="@+id/rlCollHead"
+        android:id="@+id/rlEditCollHead"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:background="#A6000F08"
@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteX="1dp">
 
         <ImageButton
-            android:id="@+id/imgBtnBack"
+            android:id="@+id/imgEditBtnBack"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -30,11 +30,11 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/lblAddColl"
+            android:id="@+id/lblEditCollMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5sp"
-            android:text="Add Collection"
+            android:text="Edit Collection"
             android:textAlignment="center"
             android:textColor="@color/c_white"
             android:textSize="40sp" />
@@ -49,11 +49,11 @@
         tools:layout_editor_absoluteY="69dp">
 
         <TextView
-            android:id="@+id/lblNewColl"
+            android:id="@+id/lblEditCollSub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
-            android:text="New Collection Details"
+            android:text="Update Collection Details"
             android:textAlignment="center"
             android:textSize="25sp" />
 
@@ -62,7 +62,7 @@
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/edtCollName"
+            android:id="@+id/edtEditCollName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -76,7 +76,7 @@
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/edtCollDesc"
+            android:id="@+id/edtEditCollDesc"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:ems="10"
@@ -88,7 +88,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llAddColl"
+        android:id="@+id/llEditColl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -98,15 +98,30 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnAddColl"
-            android:layout_width="match_parent"
+            android:id="@+id/btnDelColl"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="60dp"
             android:shadowColor="#000000"
             android:shadowRadius="60"
-            android:text="Add Collection"
-            android:textSize="20sp">
+            android:text="Delete"
+            android:backgroundTint="@color/c_red"
+            android:textSize="20sp"/>
 
-        </Button>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/btnEditColl"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:shadowColor="#000000"
+            android:shadowRadius="60"
+            android:text="Save"
+            android:backgroundTint="@color/c_green"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>

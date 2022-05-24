@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Collecto">
         <activity
+            android:name=".EditCollection"
+            android:exported="false" />
+        <activity
             android:name=".AddCollectionActivity"
             android:exported="false" />
         <activity
