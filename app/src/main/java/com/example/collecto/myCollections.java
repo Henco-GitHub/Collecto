@@ -81,7 +81,12 @@ public class myCollections extends AppCompatActivity {
 
                 for (DataSnapshot snap : snapshot.getChildren()) {
                     ModelCollection mc = snap.getValue(ModelCollection.class);
-                    collArrayList.add(mc);
+
+                    FirebaseUser firebaseUser = FireAuth.getCurrentUser();
+
+                    if (mc.getUid().equals(firebaseUser.getUid())) {
+                        collArrayList.add(mc);
+                    }
                 }
 
                 adapCollection = new AdapterCollection(myCollections.this, collArrayList);

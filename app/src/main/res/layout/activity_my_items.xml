@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".myCollections">
+
+    <RelativeLayout
+        android:id="@+id/rlItemHead"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#A6000F08"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <TextView
+            android:id="@+id/lblItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5sp"
+            android:text="My Items"
+            android:textAlignment="center"
+            android:textColor="@color/c_white"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edtSearchItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlItemHead"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/c_grey"
+        android:drawableStart="@drawable/ic_search"
+        android:focusable="auto"
+        android:hint="Search Items"
+        android:padding="10dp"
+        android:textColorHint="@color/c_black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/llAddItem"
+        android:layout_below="@id/edtSearchItems"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_collection">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/llAddItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:shadowColor="#000000"
+            android:shadowRadius="60"
+            android:text="+ Add Item"
+            android:textSize="20sp">
+
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>

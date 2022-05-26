@@ -34,10 +34,6 @@ public class AdapterCollection extends RecyclerView.Adapter<AdapterCollection.Ho
         this.collFiltered = collArrayList;
     }
 
-    private void SendToEdit() {//Net gou op die foon
-
-    }
-
     @NonNull
     @Override
     public HolderCollection onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

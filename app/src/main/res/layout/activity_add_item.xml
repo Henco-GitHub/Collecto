@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".AddItemectionActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlItemHead"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#A6000F08"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <ImageButton
+            android:id="@+id/imgBtnBack"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/arrow"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/lblAddItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5sp"
+            android:text="Add Item"
+            android:textAlignment="center"
+            android:textColor="@color/c_white"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="661dp"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="69dp">
+
+        <TextView
+            android:id="@+id/lblNewItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="New Itemection Details"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/edtItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Itemection Name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColor="@color/c_black" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/edtItemDesc"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Itemection Description"
+            android:inputType="textMultiLine"
+            android:textColor="@color/c_black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAddItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:shadowColor="#000000"
+            android:shadowRadius="60"
+            android:text="Add Itemection"
+            android:textSize="20sp">
+
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>

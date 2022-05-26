@@ -1,22 +1,21 @@
 package com.example.collecto;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Item {
-    private String name;
-    private String description;
+public class ModelItem {
+    private String name, description, pic, collection, uid;
     private Date date;
-    private String pic;
 
-    public Item(String name, String description, Date date, String pic) {
+    public ModelItem() {
+    }
+
+    public ModelItem(String name, String description, Date date, String pic, String collection, String uid) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.pic = pic;
-    }
-
-    public Item() {
+        this.collection = collection;
+        this.uid = uid;
     }
 
     public String getName() {
@@ -49,5 +48,21 @@ public class Item {
 
     public void setPic(String pic) {
         this.pic = pic;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
