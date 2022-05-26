@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.collecto.databinding.RowCollectionBinding;
@@ -51,6 +53,21 @@ public class AdapterCollection extends RecyclerView.Adapter<AdapterCollection.Ho
 
         holder.tvCollection.setText(name);
 
+        holder.cvCollection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id", id);
+                hashMap.put("name", name);
+                hashMap.put("description", description);
+                hashMap.put("uid", uid);
+
+                Intent i = new Intent(context, myItems.class);
+                i.putExtra("Info", hashMap);
+                context.startActivity(i);
+            }
+        });
+
         holder.imgBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,12 +102,14 @@ public class AdapterCollection extends RecyclerView.Adapter<AdapterCollection.Ho
     class HolderCollection extends RecyclerView.ViewHolder {
         TextView tvCollection;
         ImageButton imgBtnEdit;
+        CardView cvCollection;
 
         public HolderCollection(@NonNull View itemView) {
             super(itemView);
 
             tvCollection = binding.tvCollection;
             imgBtnEdit = binding.imgBtnEdit;
+            cvCollection = binding.cvCollection;
         }
     }
 }

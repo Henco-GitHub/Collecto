@@ -54,9 +54,10 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
     @Override
     public void onBindViewHolder(@NonNull AdapterItem.HolderCollection holder, int position) {
         ModelItem model = itemArrayList.get(position);
+        String id = model.getId();
         String name = model.getName();
         String description = model.getDescription();
-        Date date = model.getDate();
+        String date = model.getDate();
         String pic = model.getPic();
         String collection = model.getCollection();
         String uid = model.getUid();
@@ -67,6 +68,7 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
             @Override
             public void onClick(View view) {
                 HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id", id);
                 hashMap.put("name", name);
                 hashMap.put("description", description);
                 hashMap.put("date", date);

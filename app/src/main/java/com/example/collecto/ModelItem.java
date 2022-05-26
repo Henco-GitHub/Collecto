@@ -3,19 +3,27 @@ package com.example.collecto;
 import java.util.Date;
 
 public class ModelItem {
-    private String name, description, pic, collection, uid;
-    private Date date;
+    private String id, name, description, pic, collection, uid, date;
 
     public ModelItem() {
     }
 
-    public ModelItem(String name, String description, Date date, String pic, String collection, String uid) {
+    public ModelItem(String id, String name, String description, String date, String pic, String collection, String uid) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.pic = pic;
         this.collection = collection;
         this.uid = uid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,11 +42,11 @@ public class ModelItem {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -13,6 +13,9 @@
             android:name=".EditItem"
             android:exported="false" />
         <activity
+            android:name=".myItems"
+            android:exported="false" />
+        <activity
             android:name=".AddItem"
             android:exported="false" />
         <activity
