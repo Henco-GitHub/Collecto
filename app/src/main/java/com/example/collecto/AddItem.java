@@ -63,7 +63,15 @@ public class AddItem extends AppCompatActivity {
         binding.imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id", c_id);
+                hashMap.put("name", c_name);
+                hashMap.put("description", c_description);
+                hashMap.put("uid", c_uid);
+
                 Intent i = new Intent(AddItem.this, myItems.class);
+                i.putExtra("Info", hashMap);
+
                 startActivity(i);
             }
         });

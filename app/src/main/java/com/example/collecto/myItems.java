@@ -43,8 +43,6 @@ public class myItems extends AppCompatActivity {
         LoadCollData();
         LoadItems();
 
-        Toast.makeText(this, ""+c_id, Toast.LENGTH_SHORT).show();
-
         binding.btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +55,14 @@ public class myItems extends AppCompatActivity {
                 Intent i = new Intent(myItems.this, AddItem.class);
                 i.putExtra("Info", hashMap);
 
+                startActivity(i);
+            }
+        });
+
+        binding.imgBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(myItems.this, myCollections.class);
                 startActivity(i);
             }
         });

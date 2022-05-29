@@ -1,16 +1,17 @@
 package com.example.collecto;
 
 public class ModelCollection {
-    String id, name, description, uid;
+    String id, name, description, uid, goal;
 
     public ModelCollection() {
     }
 
-    public ModelCollection(String id, String name, String description, String uid) {
+    public ModelCollection(String id, String name, String description, String uid, String goal) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.uid = uid;
+        this.goal = goal;
     }
 
     public String getId() {
@@ -43,5 +44,13 @@ public class ModelCollection {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoal(String goal) {
+        this.goal = goal;
     }
 }

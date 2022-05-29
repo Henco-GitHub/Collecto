@@ -28,10 +28,13 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
 
     private SearchItem search;
 
+    public AdapterItem() {
+    }
+
     public AdapterItem(Context context, ArrayList<ModelItem> itemArrayList) {
         this.context = context;
         this.itemArrayList = itemArrayList;
-        this.itemFiltered = itemFiltered;
+        this.itemFiltered = itemArrayList;
     }
 
 
@@ -54,35 +57,51 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
     @Override
     public void onBindViewHolder(@NonNull AdapterItem.HolderCollection holder, int position) {
         ModelItem model = itemArrayList.get(position);
-        String id = model.getId();
-        String name = model.getName();
-        String description = model.getDescription();
-        String date = model.getDate();
-        String pic = model.getPic();
-        String collection = model.getCollection();
-        String uid = model.getUid();
+        String i_id = model.getId();
+        String i_name = model.getName();
+        String i_description = model.getDescription();
+        String i_date = model.getDate();
+        String i_pic = model.getPic();
+        String i_collection = model.getCollection();
+        String i_uid = model.getUid();
 
-        holder.tvItem.setText(name);
+        holder.tvItem.setText(i_name);
 
         holder.imgBtnEditItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HashMap<String,Object> hashMap = new HashMap<>();
-                hashMap.put("id", id);
-                hashMap.put("name", name);
-                hashMap.put("description", description);
-                hashMap.put("date", date);
-                hashMap.put("pic", pic);
-                hashMap.put("collection", collection);
-                hashMap.put("uid", uid);
+                hashMap.put("id", i_id);
+                hashMap.put("name", i_name);
+                hashMap.put("description", i_description);
+                hashMap.put("date", i_date);
+                hashMap.put("pic", i_pic);
+                hashMap.put("collection", i_collection);
+                hashMap.put("uid", i_uid);
 
                 //ADD EDIT ITEM CLASS
-                Intent i = new Intent(context, EditCollection.class);
-                i.putExtra("Info", hashMap);
+                Intent i = new Intent(context, EditItem.class);
+                i.putExtra("item", hashMap);
+                i.putExtra("coll", CollInfo());
 
                 context.startActivity(i);
             }
         });
+    }
+
+    String c_id, c_name, c_description, c_uid;
+    static HashMap<String,Object> c_info;
+    public void SetCollData(HashMap<String,Object> info) {
+        c_info = info;
+
+        c_id = (String) info.get("id");
+        c_name = (String) info.get("name");
+        c_description = (String) info.get("description");
+        c_uid = (String) info.get("uid");
+    }
+
+    public HashMap<String,Object> CollInfo() {
+        return c_info;
     }
 
     @Override
