@@ -1,5 +1,6 @@
 package com.example.collecto;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,7 +52,7 @@ public class myCollections extends AppCompatActivity {
                 try {
                     adapCollection.getFilter().filter(charSequence);
                 } catch (Exception e) {
-                    Toast.makeText(myCollections.this, ""+e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(myCollections.this, "" + e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -68,6 +69,18 @@ public class myCollections extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                GoBack();
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
+
+    }
+
+    private void GoBack() {
     }
 
     private void LoadCollections() {

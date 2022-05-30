@@ -98,8 +98,6 @@ public class AddCollectionActivity extends AppCompatActivity {
                 if (input < 0) {
                     binding.edtGoal.setText("0");
                 }
-
-                Toast.makeText(AddCollectionActivity.this, ""+input, Toast.LENGTH_SHORT).show();
             }
 
             @Override

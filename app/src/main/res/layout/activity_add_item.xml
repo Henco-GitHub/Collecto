@@ -63,10 +63,10 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
+        <ImageView
+            android:id="@+id/imgItem"
             android:layout_width="match_parent"
-            android:layout_height="147dp"
+            android:layout_height="150dp"
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <LinearLayout
@@ -75,18 +75,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="86dp"
+                android:id="@+id/btnSelPic"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Select Picture" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="67dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Take Photo" />
         </LinearLayout>
 
         <Space

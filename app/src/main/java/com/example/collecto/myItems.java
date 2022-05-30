@@ -1,5 +1,6 @@
 package com.example.collecto;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -62,8 +63,7 @@ public class myItems extends AppCompatActivity {
         binding.imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(myItems.this, myCollections.class);
-                startActivity(i);
+                GoBack();
             }
         });
 
@@ -87,6 +87,19 @@ public class myItems extends AppCompatActivity {
 
             }
         });
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                GoBack();
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
+    }
+
+    private void GoBack() {
+        Intent i = new Intent(myItems.this, myCollections.class);
+        startActivity(i);
     }
 
     private void LoadCollData() {

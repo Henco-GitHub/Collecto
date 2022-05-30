@@ -9,6 +9,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,7 +26,7 @@ import java.util.HashMap;
 
 public class EditCollection extends AppCompatActivity {
 
-    String id, name, description, uid;
+    String id, name, description, goal, uid;
 
     private ActivityEditCollectionBinding binding;
 
@@ -81,6 +83,51 @@ public class EditCollection extends AppCompatActivity {
             }
         });
 
+        binding.btnDecGoalEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int i = Integer.parseInt(binding.edtGoalEdit.getText().toString());
+                i--;
+                binding.edtGoalEdit.setText("" + i);
+            }
+        });
+
+        binding.btnIncGoalEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int i = Integer.parseInt(binding.edtGoalEdit.getText().toString());
+                i++;
+                binding.edtGoalEdit.setText("" + i);
+            }
+        });
+
+        binding.edtGoalEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                int input = 0;
+
+                try {
+                    input = Integer.parseInt(binding.edtGoalEdit.getText().toString());
+                } catch (Exception e) {
+                    Toast.makeText(EditCollection.this, "Invalid number entered!", Toast.LENGTH_SHORT).show();
+                    binding.edtGoalEdit.setText("0");
+                }
+
+                if (input < 0) {
+                    binding.edtGoalEdit.setText("0");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private void SaveCollection() {
@@ -88,11 +135,13 @@ public class EditCollection extends AppCompatActivity {
 
         name = binding.edtEditCollName.getText().toString();
         description = binding.edtEditCollDesc.getText().toString();
+        goal = binding.edtGoalEdit.getText().toString();
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("id", id);
         hashMap.put("name", name);
         hashMap.put("description", description);
+        hashMap.put("goal", goal);
         hashMap.put("uid", "" + uid);
 
 
@@ -146,9 +195,11 @@ public class EditCollection extends AppCompatActivity {
         id = (String) hashMap.get("id");
         name = (String) hashMap.get("name");
         description = (String) hashMap.get("description");
+        goal = (String) hashMap.get("goal");
         uid = (String) hashMap.get("uid");
 
         binding.edtEditCollName.setText(name);
         binding.edtEditCollDesc.setText(description);
+        binding.edtGoalEdit.setText(goal);
     }
 }

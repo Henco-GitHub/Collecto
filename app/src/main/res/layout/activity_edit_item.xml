@@ -61,12 +61,11 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
+        <ImageView
+            android:id="@+id/imgItemEdit"
             android:layout_width="match_parent"
             android:layout_height="147dp"
-            android:scaleType="centerInside"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            android:scaleType="centerInside"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,20 +96,7 @@
                 android:text="select"
                 android:textSize="20sp" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="match_parent" />
 
-            <Button
-                android:id="@+id/btnTakePic"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/c_blue"
-                android:shadowColor="#000000"
-                android:shadowRadius="60"
-                android:text="take new"
-                android:textSize="20sp" />
         </LinearLayout>
 
         <Space
