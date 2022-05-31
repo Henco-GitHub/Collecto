@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.collecto.databinding.RowCollectionBinding;
@@ -87,6 +88,27 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
                 context.startActivity(i);
             }
         });
+
+        holder.cvItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("id", i_id);
+                hashMap.put("name", i_name);
+                hashMap.put("description", i_description);
+                hashMap.put("date", i_date);
+                hashMap.put("pic", i_pic);
+                hashMap.put("collection", i_collection);
+                hashMap.put("uid", i_uid);
+
+                //ADD EDIT ITEM CLASS
+                Intent i = new Intent(context, ViewItem.class);
+                i.putExtra("item", hashMap);
+                i.putExtra("coll", CollInfo());
+
+                context.startActivity(i);
+            }
+        });
     }
 
     String c_id, c_name, c_description, c_uid;
@@ -112,12 +134,14 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.HolderCollecti
     class HolderCollection extends RecyclerView.ViewHolder {
         TextView tvItem;
         ImageButton imgBtnEditItem;
+        CardView cvItem;
 
         public HolderCollection(@NonNull View itemView) {
             super(itemView);
 
             tvItem = binding.tvItem;
             imgBtnEditItem = binding.imgBtnEditItem;
+            cvItem = binding.cvItem;
         }
     }
 }

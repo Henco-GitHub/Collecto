@@ -51,11 +51,10 @@ public class EditItem extends AppCompatActivity {
     //Layout Binding
     private ActivityEditItemBinding binding;
 
-    //Firebase Authorisation
+    //Firebase Instances
     private FirebaseAuth FireAuth;
     private FirebaseStorage storage;
     private StorageReference storageRef;
-    private StorageReference pathReference;
 
     //Progress Dialog
     ProgressDialog progressDialog;
@@ -82,11 +81,7 @@ public class EditItem extends AppCompatActivity {
         LoadCollData();
         LoadItemData();
 
-        pathReference = storageRef.child("images/" + i_pic + ".jpg");
-        StorageReference gsReference = storage.getReferenceFromUrl("gs://collecto-cda25.appspot.com/images/");
-
         LoadImage(i_pic);
-
 
         binding.imgEditBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override

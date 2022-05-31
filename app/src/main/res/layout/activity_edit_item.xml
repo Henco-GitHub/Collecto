@@ -40,128 +40,136 @@
             android:textSize="40sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="661dp"
-        android:layout_marginTop="70dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="69dp">
-
-        <TextView
-            android:id="@+id/lblEditItemSub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15sp"
-            android:text="Update Item Details"
-            android:textAlignment="center"
-            android:textSize="25sp"
-            android:textColor="@color/c_black"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:id="@+id/lblItemPic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:text="Item Picture"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
-
-        <ImageView
-            android:id="@+id/imgItemEdit"
-            android:layout_width="match_parent"
-            android:layout_height="147dp"
-            android:scaleType="centerInside"/>
+    <ScrollView
+        android:id="@+id/svEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llEditItem"
+        android:layout_below="@id/rlEditItemHead">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="69dp">
 
+            <TextView
+                android:id="@+id/lblEditItemSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:text="Update Item Details"
+                android:textAlignment="center"
+                android:textColor="@color/c_black"
+                android:textSize="25sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/lblItemPic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Item Picture"
+                android:textColor="@color/c_black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imgItemEdit"
+                android:layout_width="match_parent"
+                android:layout_height="147dp"
+                android:scaleType="centerInside" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llItemPicChange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnSelPic"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/c_blue"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="60"
+                    android:text="select"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/lblItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Name"
+                android:textColor="@color/c_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtEditItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/c_black" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/lblItemDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="Description"
+                android:textColor="@color/c_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtEditItemDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:textColor="@color/c_black" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llItemPicChange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnSelPic"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/c_blue"
-                android:shadowColor="#000000"
-                android:shadowRadius="60"
-                android:text="select"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:id="@+id/lblItemName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:text="Name"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
-
-        <EditText
-            android:id="@+id/edtEditItemName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="@color/c_black" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:id="@+id/lblItemDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:text="Description"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
-
-        <EditText
-            android:id="@+id/edtEditItemDesc"
-            android:layout_width="match_parent"
-            android:layout_height="104dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:textColor="@color/c_black" />
-
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/llEditItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
