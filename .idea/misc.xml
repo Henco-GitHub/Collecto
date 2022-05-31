@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/drawable/arrow.xml" value="0.2065" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/drawable/arrow_black.xml" value="0.2065" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/drawable/arrow_white.xml" value="0.2065" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/drawable/ic_edit_white.xml" value="0.2065" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_add_collection.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_add_item.xml" value="0.33" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_edit_collection.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_edit_collection.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_edit_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_my_collections.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_my_items.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Collecto/app/src/main/res/layout/row_collection.xml" value="0.33" />
         <entry key="..\:/Users/user-pc/Downloads/Collecto/app/src/main/res/drawable/shape_edit_collection.xml" value="0.3675" />
         <entry key="..\:/Users/user-pc/Downloads/Collecto/app/src/main/res/layout/activity_add_collection.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user-pc/Downloads/Collecto/app/src/main/res/layout/activity_add_item.xml" value="0.33" />

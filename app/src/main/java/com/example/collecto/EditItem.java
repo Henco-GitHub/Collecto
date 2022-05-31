@@ -102,7 +102,7 @@ public class EditItem extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditItem.this);
                 builder.setTitle("Delete")
-                        .setMessage("Are you sure you want to delete \nCollection: " + i_name + "?")
+                        .setMessage("Are you sure you want to delete \nItem: " + i_name + "?")
                         .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int choice) {

@@ -50,6 +50,14 @@ public class RegisterActivity extends AppCompatActivity {
                 ValidateData();
             }
         });
+
+        binding.imgEditBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     String name = "";

@@ -57,11 +57,21 @@
             android:layout_marginTop="15sp"
             android:text="New Item Details"
             android:textAlignment="center"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="@color/c_black"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/lblItemPic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Item Picture"
+            android:textSize="18sp"
+            android:textColor="@color/c_black"/>
 
         <ImageView
             android:id="@+id/imgItem"
@@ -77,21 +87,35 @@
             <Button
                 android:id="@+id/btnSelPic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:text="Select Picture" />
+                android:backgroundTint="@color/c_blue"
+                android:shadowColor="#000000"
+                android:shadowRadius="60"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="select"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
+        <TextView
+            android:id="@+id/lblItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Name"
+            android:textSize="18sp"
+            android:textColor="@color/c_black"/>
+
         <EditText
             android:id="@+id/edtItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Item Name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textColor="@color/c_black" />
@@ -100,13 +124,21 @@
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
+        <TextView
+            android:id="@+id/lblItemDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Description"
+            android:textSize="18sp"
+            android:textColor="@color/c_black"/>
+
         <EditText
             android:id="@+id/edtItemDesc"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Item Description"
             android:inputType="textMultiLine"
             android:textColor="@color/c_black" />
 

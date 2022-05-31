@@ -10,48 +10,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp">
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="9dp"
-            android:src="@drawable/logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/lblTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="11dp"
             android:text="Collecto"
+            android:textAlignment="center"
+            android:textColor="@color/c_black"
             android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lblLogReg"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="23dp"
             android:text="Login/Register"
+            android:textAlignment="center"
+            android:textColor="@color/c_black"
             android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="18dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
@@ -60,28 +59,23 @@
                 android:id="@+id/lblEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="17dp"
                 android:text="Email"
+                android:textColor="@color/c_black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/txtEmail"
-                app:layout_constraintStart_toStartOf="@+id/txtEmail" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txtEmail"
-                android:layout_width="225dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/lblPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/c_black" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -89,58 +83,65 @@
                 android:id="@+id/lblPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginBottom="14dp"
                 android:text="Password"
+                android:textColor="@color/c_black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/txtPassword"
-                app:layout_constraintStart_toStartOf="@+id/txtPassword" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txtPassword"
-                android:layout_width="224dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="21dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                app:layout_constraintBottom_toTopOf="@+id/btnLogReg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/btnLogReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
-                android:text="Login"
-                app:layout_constraintBottom_toTopOf="@+id/btnToReg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:ems="10"
+                android:inputType="textPassword"
+                android:textColor="@color/c_black" />
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="18dp" />
+
+        <Button
+            android:id="@+id/btnLogReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/c_blue"
+            android:shadowColor="#000000"
+            android:shadowRadius="60"
+            android:text="Login"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="18dp" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/lblReg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="9dp"
-                android:layout_marginBottom="44dp"
-                android:text="Don't have an account?"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnToReg" />
+                android:layout_height="match_parent"
+                android:text="Need an account?"
+                android:textColor="@color/c_black"
+                android:gravity="center"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/btnToReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/c_blue"
+                android:shadowColor="#000000"
+                android:shadowRadius="60"
                 android:text="Register"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lblReg"
-                app:layout_constraintEnd_toEndOf="@+id/btnLogReg" />
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 
