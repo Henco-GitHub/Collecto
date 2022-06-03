@@ -43,8 +43,9 @@
         this.description = description;
         this.pic = pic;-->
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="661dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llAddItem"
         android:layout_marginTop="70dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
@@ -57,8 +58,8 @@
             android:layout_marginTop="15sp"
             android:text="New Item Details"
             android:textAlignment="center"
-            android:textSize="25sp"
-            android:textColor="@color/c_black"/>
+            android:textColor="@color/c_black"
+            android:textSize="25sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -70,8 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="Item Picture"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
+            android:textColor="@color/c_black"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/imgItem"
@@ -88,14 +89,27 @@
                 android:id="@+id/btnSelPic"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/c_blue"
                 android:shadowColor="#000000"
                 android:shadowRadius="60"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:text="select"
-                android:textSize="20sp" />
+                android:text="Open Gallery"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnTakePic"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/c_blue"
+                android:shadowColor="#000000"
+                android:shadowRadius="60"
+                android:text="Take Picture"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <Space
@@ -108,8 +122,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="Name"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
+            android:textColor="@color/c_black"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/edtItemName"
@@ -130,8 +144,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="Description"
-            android:textSize="18sp"
-            android:textColor="@color/c_black"/>
+            android:textColor="@color/c_black"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/edtItemDesc"

@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class AddCollectionActivity extends AppCompatActivity {
+    //Class Variables
+    private String c_name, c_desc, c_goal;
 
     //Layout Binding
     private ActivityAddCollectionBinding binding;
@@ -39,27 +41,34 @@ public class AddCollectionActivity extends AppCompatActivity {
         binding = ActivityAddCollectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Set Firebase Instance
         FireAuth = FirebaseAuth.getInstance();
 
+        //Instantiate ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait...");
         progressDialog.setCanceledOnTouchOutside(false);
 
+        //Add Button Onclick
         binding.btnAddColl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Validate Input
                 ValidateData();
             }
         });
 
+        //Back Button OnClick
         binding.imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Send to previous activity
                 Intent i = new Intent(AddCollectionActivity.this, myCollections.class);
                 startActivity(i);
             }
         });
 
+        //Decrease Goal Button OnClick
         binding.btnDecGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +78,7 @@ public class AddCollectionActivity extends AppCompatActivity {
             }
         });
 
+        //Increment Goal Button OnClick
         binding.btnIncGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +88,7 @@ public class AddCollectionActivity extends AppCompatActivity {
             }
         });
 
+        //Goal EditText OnChange
         binding.edtGoal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -86,6 +97,7 @@ public class AddCollectionActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //EditText Input Validation
                 int input = 0;
 
                 try {
@@ -107,15 +119,14 @@ public class AddCollectionActivity extends AppCompatActivity {
         });
     }
 
-    String c_name = "";
-    String c_desc = "";
-    String c_goal = "";
-
+    //Input Validation
     private void ValidateData() {
+        //Get Input
         c_name = binding.edtCollName.getText().toString().trim();
         c_desc = binding.edtCollDesc.getText().toString().trim();
         c_goal = binding.edtGoal.getText().toString().trim();
 
+        //Check for empty/invalid inputs
         if (TextUtils.isEmpty(c_name)) {
             Toast.makeText(this, "Invalid name entered!", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(c_desc)) {
@@ -123,16 +134,21 @@ public class AddCollectionActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(c_goal)) {
             Toast.makeText(this, "Invalid goal entered!", Toast.LENGTH_SHORT).show();
         } else {
+            //Inputs OK -> Add Collection
             AddCollection();
         }
     }
 
+    //Add Collection
     private void AddCollection() {
+        //Show Progress Dialog
         progressDialog.setMessage("Adding Collection...");
         progressDialog.show();
 
+        //Get ID for Collection
         long c_id = System.currentTimeMillis();
 
+        //Create HashMap to push to FireBase
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("id", "" + c_id);
         hashMap.put("name", "" + c_name);
@@ -140,12 +156,15 @@ public class AddCollectionActivity extends AppCompatActivity {
         hashMap.put("goal", "" + c_goal);
         hashMap.put("uid", "" + FireAuth.getUid());
 
+        //Get Reference
         DatabaseReference refCollections = FirebaseDatabase.getInstance().getReference("collections");
+        //Set firebase id and add hashmap
         refCollections.child("" + c_id)
                 .setValue(hashMap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        //Added; Stop Dialog and Redirect
                         progressDialog.dismiss();
                         Toast.makeText(AddCollectionActivity.this, "Collection Added!", Toast.LENGTH_SHORT).show();
 

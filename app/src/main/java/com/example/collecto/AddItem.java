@@ -7,14 +7,24 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.camera.core.ImageCapture;
+import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,6 +42,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -42,8 +54,12 @@ import java.util.Locale;
 
 public class AddItem extends AppCompatActivity {
 
-    private static final int RESULT_LOAD_IMAGE = 1;
+    private static final int PICTURE_FROM_CAMERA = 1;
     String c_id, c_name, c_description, c_uid;
+    String i_name = "";
+    String i_desc = "";
+    String i_pic = "";
+
 
     //Layout Binding
     private ActivityAddItemBinding binding;
@@ -61,6 +77,8 @@ public class AddItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         FireAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -97,7 +115,7 @@ public class AddItem extends AppCompatActivity {
             }
         });
 
-        ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+        ActivityResultLauncher<Intent> selectImage = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -105,7 +123,13 @@ public class AddItem extends AppCompatActivity {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             // There are no request codes
                             Uri image = result.getData().getData();
-                            binding.imgItem.setImageURI(image);
+                            Bitmap bitmap = null;
+                            try {
+                                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver() , image);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            binding.imgItem.setImageBitmap(bitmap);
                         }
                     }
                 });
@@ -113,10 +137,22 @@ public class AddItem extends AppCompatActivity {
         binding.btnSelPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                someActivityResultLauncher.launch(gallery);
+                try {
+                    Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    selectImage.launch(gallery);
+                } catch (Exception e) {
+                    Toast.makeText(AddItem.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+        binding.btnTakePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePicture();
+            }
+        });
+
     }
 
     private void UploadImage(StorageReference ref, String Image_ID) {
@@ -158,22 +194,13 @@ public class AddItem extends AppCompatActivity {
                 Intent i = new Intent(AddItem.this, myItems.class);
                 i.putExtra("Info", hashMap);
 
-                startActivity(i);
-
                 progressDialog.dismiss();
+
+                startActivity(i);
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    String i_name = "";
-    String i_desc = "";
-    String i_pic = "";
 
     private void ValidateData() {
         i_name = binding.edtItemName.getText().toString().trim();
@@ -237,5 +264,39 @@ public class AddItem extends AppCompatActivity {
                         Toast.makeText(AddItem.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    //Taking and setting a Picture
+
+    File photoFile = null;
+
+    private void takePicture(){
+        Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        try {
+            photoFile = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Uri uri = FileProvider.getUriForFile(this, "com.example.collecto.fileprovider", photoFile);
+        pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        startActivityForResult(pictureIntent, PICTURE_FROM_CAMERA);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == PICTURE_FROM_CAMERA) {
+                Uri uri = FileProvider.getUriForFile(this, "com.example.collecto.fileprovider", photoFile);
+                binding.imgItem.setImageURI(uri);
+            }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
