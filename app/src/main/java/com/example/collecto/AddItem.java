@@ -289,8 +289,8 @@ public class AddItem extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == PICTURE_FROM_CAMERA) {
+        if (requestCode == PICTURE_FROM_CAMERA) {
+            if (resultCode == RESULT_OK) {
                 Uri uri = FileProvider.getUriForFile(this, "com.example.collecto.fileprovider", photoFile);
                 binding.imgItem.setImageURI(uri);
             }
